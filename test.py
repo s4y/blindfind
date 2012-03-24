@@ -1,14 +1,7 @@
 import pyglet
 
-player = pyglet.media.Player()
-player.queue(pyglet.media.load('loop.wav', streaming=False))
-player.eos_action = player.EOS_LOOP
-player.play()
-
 window = pyglet.window.Window()
 
-image = pyglet.image.load('crosshairs.png')
-sprite = pyglet.sprite.Sprite(image)
 
 @window.event
 def on_mouse_motion(mouseX, mouseY, dx, dy):
@@ -24,4 +17,18 @@ def on_draw():
 	sprite.set_position(0, 0)
 	sprite.draw()
 
-pyglet.app.run()
+
+event_loop = pyglet.app.EventLoop()
+
+@event_loop.event
+def on_enter():
+	global player, image, sprite
+	player = pyglet.media.Player()
+	player.eos_action = player.EOS_LOOP
+	player.queue(pyglet.media.load('loop.wav', streaming=False))
+	player.play()
+
+	image = pyglet.image.load('crosshairs.png')
+	sprite = pyglet.sprite.Sprite(image)
+
+event_loop.run()
