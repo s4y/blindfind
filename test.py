@@ -1,6 +1,6 @@
 import pyglet
 
-window = pyglet.window.Window()
+window = pyglet.window.Window(width=670, height=669)
 
 
 @window.event
