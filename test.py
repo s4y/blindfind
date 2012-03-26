@@ -16,8 +16,7 @@ def on_mouse_motion(mouseX, mouseY, dx, dy):
 def on_draw():
 	window.clear()
 	sprite.set_position(0, 0)
-	pyglet.text.Label('DING', font_name='Arial', font_size=24, x=100, y=100).draw()
-	image.blit(10, 10)
+	image.blit(0, 0)
 
 
 event_loop = pyglet.app.EventLoop()
